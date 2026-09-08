@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulários</title>
+  </head>
+  <body>
+    <form>
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Escreva seu nome aqui"
+        required
+      />
+      <br />
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Digite o seu email"
+        required
+      />
+      <br>
+      <label for="sobrenome">Sobrenome:</label>
+      <input
+        type="text"
+        id="sobrenome"
+        name="sobrenome"
+        placeholder="Escreva seu sobrenome aqui"
+        required
+      />
+      <br />
+
+      <label>Qual sua comida preferida?</label> <br />
+      <label> <input type="radio" name="comida" value="banana" />Banana </label
+      ><br />
+      <label> <input type="radio" name="comida" value="maca" />Maçã </label
+      ><br />
+      <label>
+        <input type="radio" name="comida" value="laranja" />Laranja </label
+      ><br />
+
+      <label for="fome">Qual seu nivel de fome?</label>
+      <select id="fome" required>
+        <option selected disabled value="">Selecionar</option>
+        <option value="baixo">Baixo</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto</option>
+      </select>
+      <br />
+
+      <label> Monte o seu hamburger: </label> <br />
+
+      <input type="checkbox" name="ing1" id="ing1" value="pao" />
+      <label for="ing1">Pão</label> <br />
+
+      <input type="checkbox" name="ing2" id="ing2" value="carne" />
+      <label for="ing2">Carne</label> <br />
+
+      <input type="checkbox" name="ing3" id="ing3" value="alface" />
+      <label for="ing3">Alface</label> <br />
+
+      <input type="checkbox" name="ing4" id="ing4" value="queijo" />
+      <label for="ing4">Queijo</label> <br />
+
+      <label for="nasc">Data de Nascimento:</label> <br>
+
+      <input type="datetime-local" name="nasc" id="nasc">
+
+
+      <input type="submit" value="Cadastrar" />
+    </form>
+  </body>
+</html>
