@@ -48,6 +48,7 @@ html {
   /* height: calc(100vh - 80px); */
 
   background-image: url("img/programador.png");
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -128,6 +129,7 @@ html {
   display: flex;
   gap: 40px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cards-projects img {
@@ -173,4 +175,30 @@ html {
 
 .footer span {
   font-weight: bolder;
+}
+
+@media (max-width: 1200px) {
+  .main h1 {
+    font-size: 28px;
+  }
+
+  .main {
+    background-size: cover;
+  }
+
+  .main p {
+    font-size: 16px;
+  }
+
+  .about {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-text {
+    width: 90%;
+    max-width: none;
+  }
+
+
 }
