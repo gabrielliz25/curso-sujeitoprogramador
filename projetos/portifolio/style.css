@@ -1,0 +1,176 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* menu do header */
+.menu {
+  background-color: rgb(43, 43, 43);
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  position: fixed;
+  z-index: 999;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.item-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.item-menu a:hover {
+  text-decoration: underline;
+}
+
+/* main */
+.main {
+  width: 100%;
+  background-color: #000;
+  height: 100vh;
+  /* height: calc(100vh - 80px); */
+
+  background-image: url("img/programador.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+}
+
+.main h1 {
+  font-size: 58px;
+  color: white;
+}
+
+.main p {
+  font-size: 24px;
+  font-style: italic;
+  color: #1e96fc;
+}
+
+.call-to-action {
+  background-color: #fff;
+  border: none;
+  padding: 12px 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.9s;
+}
+
+.call-to-action:hover {
+  transform: scale(1.1);
+}
+
+/* sobre */
+.about {
+  width: 90%;
+  margin: 100px auto;
+  display: flex;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+.about-text {
+  text-align: justify;
+  max-width: 450px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.img img {
+  max-width: 450px;
+  border-radius: 10px;
+}
+
+/* projetos */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.title-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-projects p {
+  font-style: italic;
+}
+
+.cards-projects {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.cards-projects img {
+  width: 300px;
+  opacity: 0.8;
+  transition: 0.5s;
+  border-radius: 15px;
+}
+
+.cards-projects img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.action-project {
+  margin: auto;
+}
+
+.action-project button {
+  background-color: rgb(43, 43, 43);
+  border: 0;
+  color: white;
+  padding: 15px 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.action-project button:hover {
+  background-color: rgb(29, 29, 29);
+  cursor: pointer;
+}
+
+.footer {
+  background-color: rgb(49, 49, 49);
+  color: white;
+  margin-top: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer span {
+  font-weight: bolder;
+}
