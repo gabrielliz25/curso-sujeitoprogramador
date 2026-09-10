@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --branco: #fff;
+  --preto: #000;
+  --background: #fafafa;
+  --button-primary: #3c96ed;
+  --border-primary: #e6e6e6;
+}
+
+a {
+  color: var(--button-primary);
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: min(100% - 2rem, 1000px);
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container > div {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Imagem principal */
+.img-insta {
+  max-width: 500px;
+}
+
+.img-insta img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.login-panel {
+  background-color: var(--background);
+  border: 1px solid var(--border-primary);
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.login-panel img {
+  width: 175px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="password"],
+input[type="text"] {
+  background-color: var(--branco);
+  border: 1px solid rgb(234, 234, 234);
+  height: 40px;
+  border-radius: 10px;
+  font-size: 13px;
+  width: 320px;
+  color: #000;
+  padding: 10px 20px;
+}
+
+input[type="password"]::placeholder,
+input[type="text"]::placeholder {
+  color: rgb(165, 164, 164);
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+  outline: 0;
+  border: 1px solid #a1a1a1;
+}
+
+/* button acessar */
+
+input[type="submit"] {
+  background-color: var(--button-primary);
+  color: #fff;
+  width: 70%;
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3483ce;
+}
+
+.info-box {
+  background-color: #fff;
+  border: 1px solid rgb(236, 234, 234);
+  margin-top: 10px;
+  padding: 25px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-box {
+  user-select: none;
+}
+
+.info-box p a {
+  user-select: none;
+  font-weight: bold;
+}
+
+/* Sessão aplicativos */
+.get-app-panel {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.app-download {
+  margin-top: 10px;
+}
+
+.app-download img {
+  height: 50px;
+  padding: 0 2px;
+}
+
+@media (max-width: 1080px) {
+  .img-insta {
+    display: none;
+  }
+
+  .container {
+    width: 70%;
+  }
+
+  input[type="submit"] {
+    max-width: 320px;
+  }
+
+  .app-download img {
+    height: 40px;
+    padding: 0 2px;
+  }
+}
