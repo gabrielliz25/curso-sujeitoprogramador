@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #0056fb;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.container-left,
+.container-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-right {
+    background-color: var(--cor-primaria);
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+    max-width: 380px;
+    margin: auto;
+    height: 400px;
+}
+
+.container-form h2 {
+    align-self: flex-start;
+    font-size: 38px;
+}
+
+.container-form form {
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 10px 0px 20px 0px;
+    width: 100%;
+}
+
+.inputs input {
+    outline: 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 49px;
+    padding: 0px 15px;
+}
+
+.inputs input::placeholder {
+    color: black;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.5);
+    margin-right: 15px;
+}
+
+.button-enviar {
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    font-size: 16px;
+    background-color: var(--cor-primaria);
+    border: 0;
+    outline: 0;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    height: 57px;
+    border-radius: 5px;
+}
+
+.text-login {
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.text-login span {
+    font-weight: bold;
+    user-select: none;
+}
+
+.text-login a {
+    text-decoration: none;
+    user-select: none;
+    color: #000;
+}
+
+.text-login a:hover {
+    text-decoration: underline;
+}
+
+/* container right */
+
+.container-info {
+    width: 90%;
+}
+
+.img {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.img img {
+    width: 100%;
+}
+
+.text-info {
+    color: white;
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-info h2 {
+    font-size: 40px;
+}
+
+.text-info p {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .container-left, .container-right {
+        padding: 50px 0px;
+    }
+}
