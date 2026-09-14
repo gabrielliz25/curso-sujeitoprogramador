@@ -14,14 +14,15 @@
 // import FormsAction from "./components/FormsAction";
 
 // useEffect
-import Effect from "./components/Effect";
+// import Effect from "./components/Effect";
+import Effect02 from "./components/Effect02";
 
 const App = () => {
     return (
         <>
             <h1>Projeto de ReactJS</h1>
 
-            <Effect />    
+            <Effect02 />    
         </>
     );
 };
