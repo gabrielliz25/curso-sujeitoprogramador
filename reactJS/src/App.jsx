@@ -1,6 +1,8 @@
 // Aula de props
 // import Props from "./components/Props";
 
+import Requisicoes from "./components/Requisicoes";
+
 // useState
 // import State from "./components/State";
 
@@ -15,14 +17,16 @@
 
 // useEffect
 // import Effect from "./components/Effect";
-import Effect02 from "./components/Effect02";
+// import Effect02 from "./components/Effect02";
+
+// Requisições
 
 const App = () => {
     return (
         <>
             <h1>Projeto de ReactJS</h1>
 
-            <Effect02 />    
+            <Requisicoes />
         </>
     );
 };
