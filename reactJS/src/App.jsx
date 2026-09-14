@@ -11,14 +11,17 @@
 // import Forms from "./components/Forms";
 
 // Formularios com Actions
-import FormsAction from "./components/FormsAction";
+// import FormsAction from "./components/FormsAction";
+
+// useEffect
+import Effect from "./components/Effect";
 
 const App = () => {
     return (
         <>
             <h1>Projeto de ReactJS</h1>
 
-            <FormsAction />    
+            <Effect />    
         </>
     );
 };
