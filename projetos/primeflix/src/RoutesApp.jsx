@@ -4,6 +4,7 @@ import Header from "./components/header";
 // paginas
 import Home from "./pages/Home"
 import Filme from "./pages/Filme"
+import Favoritos from "./pages/Favoritos"
 
 const RoutesApp = () => {
     return <BrowserRouter>
@@ -11,6 +12,7 @@ const RoutesApp = () => {
         <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Filme />} path="/filme/:id" />
+            <Route element={<Favoritos />} path="/favoritos" />
         </Routes>
     </BrowserRouter>
 };

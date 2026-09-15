@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    padding-top: 50px;
+}
+
+.card-favorite {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+}
+
+.acts button {
+    background-color: rgb(255, 136, 136);
+    border: 0;
+    outline: 0;
+    color: rgb(187, 0, 0);
+    padding: 5px 10px;
+    font-size: 18px;
+    border: 1px solid rgb(187, 0, 0);
+    border-radius: 5px;
+}
+
+.acts button:hover {
+    background-color: rgb(253, 109, 109);
+    cursor: pointer;
+}
