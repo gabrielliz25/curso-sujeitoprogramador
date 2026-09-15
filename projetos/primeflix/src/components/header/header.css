@@ -1,0 +1,29 @@
+.menu {
+    background-color: rgb(24, 24, 24);
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu .logo {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu .favoritos {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu .favoritos:hover {
+    text-decoration: underline;
+}
