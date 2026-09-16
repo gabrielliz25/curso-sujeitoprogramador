@@ -1,0 +1,60 @@
+## UTILIZANDO EM UM COMPONENTE
+    - importa o "db":
+        import { db } from (lugar salvo)
+
+
+## ADICIONAR ITENS NOVOS NO BANCO
+    - importa biblioteca (doc e setDoc) -> firebase/firestore
+    - na função que vai adicionar, coloque esse bloco de codigo:
+        await setDoc(doc(db, "posts", "123"), {
+            titulo: "React + firebase",
+            autor: "joao"
+        })
+
+        posts -> nome da collection
+        123 -> id da doc
+        { } -> passa o que vc quer adicionar
+
+
+## EXEMPLO DE FORMA PARA ADICIONAR ITENS
+    await setDoc(doc(db, "posts", "789"), {
+            titulo: titulo,
+            autor: autor,
+        })
+            .then(() => {
+                console.log("Dados Cadastrados no Banco");
+            })
+            .catch((err) => console.log("ERRO:", err));
+
+
+## OUTRA FORMA PARA ADICIONAR -> ID UNICO
+    1. importar "addDoc" e "collection" do "firebase/firestore"
+    await addDoc(collection(db, "posts"), {
+            titulo: titulo,
+            autor: autor,
+        })
+            .then(() => console.log("Dados Cadastrados no Banco"))
+            .catch((err) => console.log("ERRO:", err));
+
+
+## BUSCAR ITEM ESPECIFICO DO BANCO
+    1. importa a biblioteca "getDoc" e "doc"
+
+    2. pego o post especifico:
+        const post = doc(db, "posts", "456");
+            
+            - db: conexão com o banco
+            - "posts": nome da collection
+            - "456": id da doc
+        
+    3. Usar o metodo "getDoc" -> Promisse
+        await getDoc(post)
+    
+    4. Dentro do bloco ".then()"
+        .then((snapshot) => { .. codigo .. })
+
+            - snapshot: o que o banco retorna
+    
+    5. Buscar valores, uitliza "data()"
+        snapshot.data().[nome da propriedade]
+        
