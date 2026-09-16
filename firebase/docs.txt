@@ -1,0 +1,58 @@
+* criar um projeto no firebase
+* criar um app (</>)
+
+* Posso ter varias collections dentro de um Banco
+* Posso ter varios docs dentro de uma mesma collection
+
+Banco de dados (Cloud Firestore):
+    - posts (collection):
+        - post1 (docs):
+            - titulo: "Aprendendo ReactJS"
+            - autor: "Gabriel Liz"
+        - post1 (docs):
+            - titulo: "Firebase é legal" 
+            - autor: "Jesus"
+
+    - users (collection):
+        - user1 (doc):
+            - nome: "Gabriel",
+            - idade: 25
+        - user2 (doc):
+            - nome: "Ana"
+            - idade: 19
+
+
+
+## INSTALAR BIBLIOTECA DO FIREBASE NO projeto
+- npm install firebase
+
+
+## BUSCAR CONFIGURAÇÕES DO FIREBASE
+    * cria o app do projeto
+    * vai nas configurações do app
+    * arrasta para baixo
+    * copia apenas "firebaseConfig"
+
+
+## CRIAR ARQUIVO DE CONFIG Firebase:
+    1. Importa a biblioteca (initializeApp) do ("firebase/app")
+    2. variavel de config:
+        const firebaseConfig = {
+            apiKey: "AIzaSyDr9vU8cd2ipZX86Q-OMB5PKsCIdL9wC2k",
+            authDomain: "cursosujeitoprogamador-22d7c.firebaseapp.com",
+            projectId: "cursosujeitoprogamador-22d7c",
+            storageBucket: "cursosujeitoprogamador-22d7c.firebasestorage.app",
+            messagingSenderId: "761443684015",
+            appId: "1:761443684015:web:c6d578ecd2b9db0cc68e5a",
+            measurementId: "G-E9RB1SCC97",
+        };
+    3. inicializa o firebaseApp:
+        const firebaseApp = initializeApp(firebaseConfig);
+
+
+## UTILIZANDO BANCO DE dados
+    1. importa o (getFirestore) do ("firebase/firestore")
+    2. variavel que vai buscar o banco criado no console do firebase
+        const db = getFirestore(firebaseApp);
+    3. exporta o "db"
+        export { db };
