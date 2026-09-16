@@ -1,0 +1,25 @@
+1. importar:
+    import { collection, getDocs } from "firebase/firestore";
+
+2. Criar variavel que vai buscar no banco os docs
+    const postRef = collection(db, "posts");
+
+3. utilizar o "getDocs" para pegar todos os docs -> Promisse
+    await getDocs(postRef)
+
+4. usar o ".then()" para capturar o sucesso
+    - ele vem com snapshot
+        .then(snapshot => { ... })
+
+    - posso fazer um loop nesse snapshot para percorrer a lista de docs, exemplo:
+        let lista = []
+        snapshot.forEach((doc) => {
+            lista.push({
+                id: doc.id,
+                titulo: doc.data().titulo,
+                autor: doc.data().autor,
+            });
+        });
+
+    - atualizar o State:
+        setPosts(lista);
