@@ -1,5 +1,6 @@
 import AddItem from "./components/AddItem";
 import BuscarItens from "./components/BuscarItens";
+import LoadItems from "./components/LoadItems";
 // import EditItem from "./components/EditItem";
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
                 <AddItem />
                 <br />
                 <BuscarItens />
+                <LoadItems />
             </div>
         </>
     );
