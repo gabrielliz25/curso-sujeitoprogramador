@@ -2,6 +2,8 @@ import { useState } from "react";
 import { db } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
+import DeleteItem from "./DeleteItem";
+
 const BuscarItems = () => {
     const [posts, setPosts] = useState([]);
 
@@ -36,6 +38,7 @@ const BuscarItems = () => {
                                 <span>{post.id}</span>
                                 <h3>{post.titulo}</h3>
                                 <p>Por: {post.autor}</p>
+                                <DeleteItem id={post.id} />
                             </span>
                             <hr />
                         </>
