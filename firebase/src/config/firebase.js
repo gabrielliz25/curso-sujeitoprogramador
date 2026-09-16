@@ -3,6 +3,9 @@ import { initializeApp } from "firebase/app";
 // config do banco de dados (cloudfire)
 import { getFirestore } from "firebase/firestore";
 
+// Config da autenticação de usuario
+import { getAuth } from "firebase/auth";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDr9vU8cd2ipZX86Q-OMB5PKsCIdL9wC2k",
     authDomain: "cursosujeitoprogamador-22d7c.firebaseapp.com",
@@ -16,5 +19,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp);
 
-export { db };
+export { db, auth };
