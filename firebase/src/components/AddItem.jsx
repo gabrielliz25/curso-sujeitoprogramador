@@ -12,7 +12,7 @@ const AddItem = () => {
         //     titulo: titulo,
         //     autor: autor,
         // })
-        //     .then(() => {
+            // .then(() => {
         //         console.log("Dados Cadastrados no Banco");
         //     })
         //     .catch((err) => console.log("ERRO:", err));

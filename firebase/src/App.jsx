@@ -3,14 +3,15 @@
 // import LoadItems from "./components/LoadItems";
 // import EditItem from "./components/EditItem";
 
-import CadasterUser from "./components/CadasterUser";
+// import CadasterUser from "./components/CadasterUser";
+import LoginUser from "./components/LoginUser";
 
 const App = () => {
     return (
         <>
             <div>
                 <h1>React + Firebase</h1>
-                <CadasterUser />
+                <LoginUser />
             </div>
         </>
     );
