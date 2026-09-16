@@ -33,6 +33,7 @@ const BuscarItems = () => {
                     posts.map((post) => (
                         <>
                             <span>
+                                <span>{post.id}</span>
                                 <h3>{post.titulo}</h3>
                                 <p>Por: {post.autor}</p>
                             </span>
