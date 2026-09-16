@@ -1,0 +1,13 @@
+header {
+    background-color: rgb(153, 48, 0);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+header span {
+    font-size: 28px;
+}
