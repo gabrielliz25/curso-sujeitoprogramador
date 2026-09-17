@@ -12,4 +12,5 @@
     "outDir" -> pasta onde os arquivos compilados vão
     "rootDir" -> pasta onde vão ficar os arquivos .ts
     "removeComments" -> quando fazer o build, remove os comentarios do arquivo .ts
+    "target" -> versão que faz o build
     
