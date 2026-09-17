@@ -3,6 +3,9 @@
     - tsc index.ts --target "ES2015"   ->  (Seleciona qual a versão do ecmascript vai rodar)
     - tsc index.ts --target "ESNEXT"   ->  (Seleciona a ultima versão do js) 
     - tsc --init   -> (Cria o arquivo tsconfig.json)
+    - tsc --watch   -> (monitora os arquivos .ts e faz o build automatico)
+
+    # Acesse a pasta build e rode o javascript usando o "node"
 
 ## Configs do tsconfig.json
     Buildar o projeto: 
@@ -13,4 +16,3 @@
     "rootDir" -> pasta onde vão ficar os arquivos .ts
     "removeComments" -> quando fazer o build, remove os comentarios do arquivo .ts
     "target" -> versão que faz o build
-    
