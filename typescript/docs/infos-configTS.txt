@@ -1,0 +1,15 @@
+## Comandos
+    - tsc index.ts   -> (Build em apenas um arquivo)
+    - tsc index.ts --target "ES2015"   ->  (Seleciona qual a versão do ecmascript vai rodar)
+    - tsc index.ts --target "ESNEXT"   ->  (Seleciona a ultima versão do js) 
+    - tsc --init   -> (Cria o arquivo tsconfig.json)
+
+## Configs do tsconfig.json
+    Buildar o projeto: 
+        - tsc
+    
+    "lib" -> adiciona bibliotecas dentro do typescript
+    "outDir" -> pasta onde os arquivos compilados vão
+    "rootDir" -> pasta onde vão ficar os arquivos .ts
+    "removeComments" -> quando fazer o build, remove os comentarios do arquivo .ts
+    
