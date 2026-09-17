@@ -1,0 +1,17 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1e1e2e;
+}
+
+.home-welcome {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.home-welcome span {
+    color: #a0a0ff;
+}

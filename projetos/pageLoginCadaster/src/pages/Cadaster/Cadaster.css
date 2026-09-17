@@ -1,0 +1,70 @@
+.cadaster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1e1e2e;
+}
+
+.cadaster-form {
+    background-color: #2a2a3d;
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 380px;
+}
+
+.cadaster-title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.cadaster-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.cadaster-field label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.cadaster-field input {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #1e1e2e;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.cadaster-field input::placeholder {
+    color: #666;
+}
+
+.cadaster-field input:focus {
+    outline: none;
+    border-color: #a0a0ff;
+}
+
+.cadaster-btn {
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    background-color: #a0a0ff;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cadaster-btn:hover {
+    background-color: #8080ee;
+}
