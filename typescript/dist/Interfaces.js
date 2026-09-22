@@ -19,4 +19,5 @@ const p3 = createPessoa("Gabriel", 19, true);
 console.log(p1);
 console.log(p2);
 console.log(p3);
+// ---------------------------------
 //# sourceMappingURL=Interfaces.js.map
