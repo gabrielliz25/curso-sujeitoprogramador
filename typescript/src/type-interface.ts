@@ -27,6 +27,5 @@ interface Soma {
 
 type Soma2 = (v1: number, v2: number) => number
 
-// interface UserId extends string | number {} Não tem como fazer isso
+// ! interface UserId extends string | number {} Não tem como fazer isso
 type UserId = string | number
-
