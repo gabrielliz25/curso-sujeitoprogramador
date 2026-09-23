@@ -1,6 +1,12 @@
+// primeiro componente (PROPS)
+import Props from "./components/Props";
+
 const App = () => {
-    return <h1>Teste 1</h1>;
+    return (
+        <div>
+            <Props text="Ola pessoal!" status={true} />
+        </div>
+    );
 };
 
 export default App;
-    
