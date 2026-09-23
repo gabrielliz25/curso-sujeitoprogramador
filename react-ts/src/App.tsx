@@ -1,10 +1,13 @@
 // primeiro componente (PROPS)
-import Props from "./components/Props";
+// import Props from "./components/Props";
+
+// useState
+import State from "./components/State";
 
 const App = () => {
     return (
         <div>
-            <Props text="Ola pessoal!" status={true} />
+            <State />
         </div>
     );
 };
