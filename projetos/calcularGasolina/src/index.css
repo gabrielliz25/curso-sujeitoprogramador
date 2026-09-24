@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+:root {
+    --background: rgb(48, 48, 48);
+    --primary: #fff;
+    --dark: #000;
+    --green: rgb(83, 228, 0);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: white;
+}
