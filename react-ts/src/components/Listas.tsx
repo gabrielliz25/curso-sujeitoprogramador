@@ -1,16 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Listas = () => {
-    const [tasks, setTasks] = useState([
-        "Comprar pão",
-        "Tomar banho",
-        "Estudar programação",
-    ]);
+    const [tasks, setTasks] = useState<string[]>(() => {
+        const local = localStorage.getItem("@tasks");
+
+        if (!local) {
+            return [];
+        }
+
+        const parsed = JSON.parse(local);
+
+        return Array.isArray(parsed) ? parsed : [];
+    });
     const [input, setInput] = useState("");
     const [edit, setEdit] = useState({
         enabled: false,
         task: "",
     });
+
+    useEffect(() => {
+        localStorage.setItem("@tasks", JSON.stringify(tasks));
+    }, [tasks]);
 
     const handleAdd = () => {
         if (!input) {
@@ -19,11 +29,12 @@ const Listas = () => {
         }
         if (edit.enabled) {
             handleSaveEdit();
-            
+
             return;
         }
 
         setTasks((prevTasks) => [...prevTasks, input]);
+        localStorage.setItem("@tasks", JSON.stringify(input));
         setInput("");
     };
 
@@ -49,8 +60,8 @@ const Listas = () => {
         setInput("");
         setEdit({
             enabled: false,
-            task: ""
-        })
+            task: "",
+        });
     };
 
     return (
@@ -64,13 +75,16 @@ const Listas = () => {
             <button onClick={handleAdd}>
                 {edit.enabled ? "Editar tarefa" : "Adicionar tarefa"}
             </button>
-            {tasks.map((item, index) => (
-                <p>
-                    {index + 1}. {item}{" "}
-                    <button onClick={() => handleDelete(item)}>Excluir</button>
-                    <button onClick={() => handleEdit(item)}>Editar</button>
-                </p>
-            ))}
+            {tasks &&
+                tasks.map((item, index) => (
+                    <p>
+                        {index + 1}. {item}{" "}
+                        <button onClick={() => handleDelete(item)}>
+                            Excluir
+                        </button>
+                        <button onClick={() => handleEdit(item)}>Editar</button>
+                    </p>
+                ))}
         </div>
     );
 };
