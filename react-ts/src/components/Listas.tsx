@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 const Listas = () => {
     const [tasks, setTasks] = useState<string[]>(() => {
@@ -12,6 +12,7 @@ const Listas = () => {
 
         return Array.isArray(parsed) ? parsed : [];
     });
+    const inputRef = useRef<HTMLInputElement>(null)
     const [input, setInput] = useState("");
     const [edit, setEdit] = useState({
         enabled: false,
@@ -44,6 +45,7 @@ const Listas = () => {
     };
 
     const handleEdit = (item: string) => {
+        inputRef.current?.focus()
         setInput(item);
         setEdit({
             enabled: true,
@@ -64,6 +66,10 @@ const Listas = () => {
         });
     };
 
+    const totalTarefas = useMemo(() => {
+        return tasks.length
+    }, [tasks])
+
     return (
         <div>
             <input
@@ -71,10 +77,14 @@ const Listas = () => {
                 placeholder="Digite uma tarefa"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                ref={inputRef}
             />
             <button onClick={handleAdd}>
                 {edit.enabled ? "Editar tarefa" : "Adicionar tarefa"}
             </button>
+            <br />
+            <span>Você tem {totalTarefas} tarefas!</span>
+            <br /><br />
             {tasks &&
                 tasks.map((item, index) => (
                     <p>
