@@ -8,7 +8,7 @@ interface CommerceProviderProps {
 
 function CommerceProvider({ children }: CommerceProviderProps) {
     const [cart, setCart] = useState<CartProps[]>([]);
-    console.log(cart);
+
     const addCartItem = (product: ProductsProps) => {
         const itemIndex = cart.findIndex((items) => items.id === product.id);
 
@@ -25,6 +25,7 @@ function CommerceProvider({ children }: CommerceProviderProps) {
                         : item,
                 ),
             );
+            return;
         }
 
         const data = {
@@ -36,6 +37,49 @@ function CommerceProvider({ children }: CommerceProviderProps) {
         setCart((prev) => [...prev, data]);
     };
 
+    const addUni = (product: ProductsProps) => {
+        setCart((prev) =>
+            prev.map((item) => {
+                if (item.id !== product.id) {
+                    return item;
+                }
+
+                const newAmount = item.amount + 1;
+
+                return {
+                    ...item,
+                    amount: newAmount,
+                    total: newAmount * item.price,
+                };
+            }),
+        );
+    };
+
+    const removeUni = (product: ProductsProps) => {
+        setCart((prev) =>
+            prev.map((item) =>
+                item.id === product.id
+                    ? {
+                          ...item,
+                          amount:
+                              item.amount > 0 ? item.amount - 1 : item.amount,
+                          total: item.price * item.amount,
+                      }
+                    : item,
+            ),
+        );
+    };
+
+    const calcAllProducts = () => {
+        let total = 0
+
+        cart.forEach((product) => {
+            total += product.total
+        })
+
+        return total
+    }
+
     return (
         <CommerceContext.Provider
             value={{
@@ -43,6 +87,9 @@ function CommerceProvider({ children }: CommerceProviderProps) {
                 setCart,
                 cartAmount: cart.length,
                 addCartItem,
+                addUni,
+                removeUni,
+                calcAllProducts
             }}
         >
             {children}

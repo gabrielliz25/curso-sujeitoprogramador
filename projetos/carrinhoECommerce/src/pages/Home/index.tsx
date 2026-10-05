@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { type ProductsProps } from "../../type/Commerce";
 import { useCommerce } from "../../context/useContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
     const { addCartItem } = useCommerce();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getProducts() {
@@ -32,7 +34,10 @@ const Home = () => {
                             <img
                                 src={product.cover}
                                 alt="Logo do produto"
-                                className="w-full h-48 object-contain mb-3"
+                                className="w-full h-48 object-contain mb-3 hover:scale-105 duration-100 cursor-pointer"
+                                onClick={() =>
+                                    navigate(`/product/${product.id}`)
+                                }
                             />
                             <p className="font-bold">{product.title}</p>
 
