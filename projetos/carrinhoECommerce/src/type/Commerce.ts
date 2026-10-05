@@ -20,4 +20,5 @@ export type CommerceContextType = {
     cart: CartProps[];
     setCart: (products: CartProps[]) => void;
     cartAmount: number;
+    addCartItem: (product: ProductsProps) => void
 };

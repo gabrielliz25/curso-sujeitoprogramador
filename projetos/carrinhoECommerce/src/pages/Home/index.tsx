@@ -1,10 +1,12 @@
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { type ProductsProps } from "../../type/Commerce"
+import { type ProductsProps } from "../../type/Commerce";
+import { useCommerce } from "../../context/useContext";
 
 const Home = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
+    const { addCartItem } = useCommerce();
 
     useEffect(() => {
         async function getProducts() {
@@ -14,6 +16,10 @@ const Home = () => {
 
         getProducts();
     }, []);
+
+    const handleAddProduct = (product: ProductsProps) => {
+        addCartItem(product);
+    };
 
     return (
         <div className="w-full max-w-5xl m-auto mt-5">
@@ -31,7 +37,10 @@ const Home = () => {
                             <p className="font-bold">{product.title}</p>
 
                             <span>R$ {product.price}</span>
-                            <button className="absolute top-2 right-2 p-2 hover:bg-black rounded-[50%] hover:text-white transition-all duration-300 cursor-pointer">
+                            <button
+                                className="absolute top-2 right-2 p-2 hover:bg-black rounded-[50%] hover:text-white transition-all duration-300 cursor-pointer"
+                                onClick={() => handleAddProduct(product)}
+                            >
                                 <FaCartPlus className="text-lg" />
                             </button>
                         </section>
