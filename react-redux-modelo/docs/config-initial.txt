@@ -1,0 +1,17 @@
+## 1 - INSTALAÇÃO BIBLIOTECA
+    npm install @reduxjs/toolkit react-redux
+
+## 2 - ESTURUTRA DE PASTAS
+    src/
+    ├── store/
+    │   ├── index.ts
+    │   └── counterSlice.ts
+    │
+    ├── hooks/
+    │   └── redux.ts
+    │
+    ├── App.tsx
+    └── main.tsx
+
+## 3 - CRIAR O ARQUIVO "Slice"
+    
