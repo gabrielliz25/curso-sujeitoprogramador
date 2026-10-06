@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import Logo from "../../assets/logo.svg";
 
 // react-router-dom
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Components
 import Container from "../../components/Container";
@@ -11,6 +12,10 @@ import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+// firebase
+import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { auth } from "../../services/firebaseConnection";
 
 const registerSchema = z.object({
     name: z.string().nonempty("O campo nome é obrigatório"),
@@ -32,9 +37,27 @@ const Register = () => {
         resolver: zodResolver(registerSchema),
         mode: "onChange",
     });
+    const navigate = useNavigate();
 
-    const onSubmit = (data: FormData) => {
-        console.log(data);
+    useEffect(() => {
+        async function handleLogout() {
+            await signOut(auth);
+        }
+
+        handleLogout();
+    }, []);
+
+    const onSubmit = async (data: FormData) => {
+        createUserWithEmailAndPassword(auth, data.email, data.password)
+            .then(async (user) => {
+                await updateProfile(user.user, {
+                    displayName: data.name,
+                });
+
+                console.log("USUÁRIO CADASTRADO COM SUCESSO");
+                navigate("/dashboard", { replace: true });
+            })
+            .catch((err) => console.log("ERRO AO CADASTRAR USUÁRIO", err));
     };
 
     return (
