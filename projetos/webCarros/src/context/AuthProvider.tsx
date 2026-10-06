@@ -5,16 +5,16 @@ import { AuthContext } from "./AuthContext";
 import type { UserProps } from "../type/user";
 
 // firebase
-import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "../services/firebaseConnection"
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../services/firebaseConnection";
 
 interface AuthProviderProps {
     children: React.ReactNode;
 }
 
 function AuthProvider({ children }: AuthProviderProps) {
-    const [user, setUser] = useState<UserProps | null>(null)
-    const [loadingUser, setLoadingUser] = useState(true)
+    const [user, setUser] = useState<UserProps | null>(null);
+    const [loadingUser, setLoadingUser] = useState(true);
 
     // verifica se tem usuario logado
     useEffect(() => {
@@ -24,24 +24,45 @@ function AuthProvider({ children }: AuthProviderProps) {
                     uid: user.uid,
                     name: user?.displayName,
                     email: user?.email,
-                })
-                setLoadingUser(false)
+                });
+                setLoadingUser(false);
             } else {
-                setUser(null)
-                setLoadingUser(false)
+                setUser(null);
+                setLoadingUser(false);
             }
-        })
+        });
 
         return () => {
-            unsub()
+            unsub();
+        };
+    }, []);
+
+    // Atualiza as informações do usuario
+    const handleUpdateUser = ({ uid, name, email }: UserProps) => {
+        setUser({
+            uid,
+            name,
+            email,
+        });
+    };
+
+    // função deslogar o usuario
+    const logout = async () => {
+        try {
+            await signOut(auth)
+        } catch {
+            console.log("ERRO AO DESLOGAR USUARIO")
         }
-    }, [])
+    }
 
     return (
         <AuthContext.Provider
             value={{
                 signed: !!user,
-                loadingUser
+                loadingUser,
+                handleUpdateUser,
+                user,
+                logout
             }}
         >
             {children}

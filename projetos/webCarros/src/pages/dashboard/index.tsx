@@ -1,5 +1,13 @@
+// components
+import HeaderDashboard from "../../components/HeaderDashboard";
+import Container from "../../components/Container";
+
 const Dashboard = () => {
-    return <h1>Pagina de dashboard</h1>;
+    return (
+        <Container>
+            <HeaderDashboard />
+        </Container>
+    );
 };
 
 export default Dashboard;

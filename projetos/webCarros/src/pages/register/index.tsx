@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import Logo from "../../assets/logo.svg";
 
+// Context auth
+import { useAuth } from "../../context/useAuth";
+
 // react-router-dom
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,7 +17,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // firebase
-import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    updateProfile,
+    signOut,
+} from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
 
 const registerSchema = z.object({
@@ -38,6 +45,7 @@ const Register = () => {
         mode: "onChange",
     });
     const navigate = useNavigate();
+    const { handleUpdateUser } = useAuth();
 
     useEffect(() => {
         async function handleLogout() {
@@ -52,6 +60,12 @@ const Register = () => {
             .then(async (user) => {
                 await updateProfile(user.user, {
                     displayName: data.name,
+                });
+
+                handleUpdateUser({
+                    uid: user.user.uid,
+                    name: data.name,
+                    email: data.email,
                 });
 
                 console.log("USUÁRIO CADASTRADO COM SUCESSO");
