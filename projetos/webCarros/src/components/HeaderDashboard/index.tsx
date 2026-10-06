@@ -8,7 +8,7 @@ const HeaderDashboard = () => {
     const { user, logout } = useAuth();
 
     return (
-        <header className="mt-5 mx-auto flex max-w-6xl items-center justify-between rounded-xl bg-red-700 px-6 py-4 text-white">
+        <header className="my-5 mx-auto flex max-w-6xl items-center justify-between rounded-xl bg-red-700 px-6 py-4 text-white">
             <h1 className="text-xl font-semibold">Bem-vindo, {user?.name}!</h1>
 
             <div className="flex items-center gap-6">
@@ -20,7 +20,7 @@ const HeaderDashboard = () => {
                 </Link>
 
                 <Link
-                    to="/"
+                    to="/dashboard/new"
                     className="font-medium transition hover:text-red-200"
                 >
                     Novo
