@@ -5,12 +5,13 @@ import Container from "../../components/Container";
 import Input from "../../components/Input";
 
 // libs
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const loginSchema = z.object({
     email: z.string().email("Digite um email válido"),
+    password: z.string().nonempty("O campo senha é obrigatório")
 });
 
 type FormData = z.infer<typeof loginSchema>;
@@ -19,16 +20,10 @@ const Login = () => {
     const {
         register,
         handleSubmit,
-        control,
         formState: { errors },
     } = useForm<FormData>({
         resolver: zodResolver(loginSchema),
         mode: "onChange",
-    });
-
-    const email = useWatch({
-        control,
-        name: "email",
     });
 
     const onSubmit = (data: FormData) => {
@@ -45,11 +40,16 @@ const Login = () => {
                         className="flex w-full flex-col gap-4"
                     >
                         <Input
-                            type="text"
+                            type="email"
                             placeholder="Digite o seu email"
                             {...register("email")}
                             errors={errors.email?.message}
-                            success={!!email && !errors.email}
+                        />
+                        <Input
+                            type="password"
+                            placeholder="Digite a sua senha"
+                            {...register("password")}
+                            errors={errors.password?.message}
                         />
                         <button className="w-fit mx-auto rounded-lg bg-red-600 px-4 py-3 font-semibold text-white transition hover:bg-red-700">
                             Acessar
