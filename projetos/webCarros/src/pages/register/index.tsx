@@ -12,20 +12,24 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-const loginSchema = z.object({
+const registerSchema = z.object({
+    name: z.string().nonempty("O campo nome é obrigatório"),
     email: z.string().email("Digite um email válido"),
-    password: z.string().nonempty("O campo senha é obrigatório"),
+    password: z
+        .string()
+        .nonempty("O campo senha é obrigatório")
+        .min(6, "Senha está muito fraca"),
 });
 
-type FormData = z.infer<typeof loginSchema>;
+type FormData = z.infer<typeof registerSchema>;
 
-const Login = () => {
+const Register = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({
-        resolver: zodResolver(loginSchema),
+        resolver: zodResolver(registerSchema),
         mode: "onChange",
     });
 
@@ -49,6 +53,12 @@ const Login = () => {
                         className="flex w-full flex-col gap-4"
                     >
                         <Input
+                            type="text"
+                            placeholder="Digite o seu nome completo"
+                            {...register("name")}
+                            errors={errors.name?.message}
+                        />
+                        <Input
                             type="email"
                             placeholder="Digite o seu email"
                             {...register("email")}
@@ -66,12 +76,12 @@ const Login = () => {
                     </form>
 
                     <Link
-                        to="/register"
+                        to="/login"
                         className="text-center text-sm text-gray-500 transition hover:text-red-600"
                     >
-                        Você ainda não possui uma conta?{" "}
+                        Você já possui uma conta?{" "}
                         <span className="font-semibold text-red-600">
-                            Cadastre-se
+                            Logar
                         </span>
                     </Link>
                 </div>
@@ -80,4 +90,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

@@ -1,9 +1,11 @@
 import { IoLogInOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 
 // components
 import Container from "../Container";
+
+// react-router-dom
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -18,9 +20,12 @@ const Header = () => {
                         />
                     </Link>
 
-                    <button className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-2xl text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
+                    <Link
+                        to="/login"
+                        className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-2xl text-gray-700 transition hover:bg-gray-100 hover:text-gray-900"
+                    >
                         <IoLogInOutline />
-                    </button>
+                    </Link>
                 </div>
             </Container>
         </header>
