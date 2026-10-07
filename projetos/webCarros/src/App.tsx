@@ -5,10 +5,11 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
+import NewCar from "./pages/newCar";
+import Details from "./pages/details";
 
 // Private routes
 import Private from "./routes/Private";
-import NewCar from "./pages/newCar";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+            {
+                path: "/details/:id",
+                element: <Details />
             },
             {
                 path: "/dashboard",

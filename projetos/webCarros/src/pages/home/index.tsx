@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import Container from "../../components/Container";
@@ -42,7 +43,12 @@ const Home = () => {
                 <Search />
 
                 <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {cars && cars.map((car) => <Card {...car} />)}
+                    {cars &&
+                        cars.map((car) => (
+                            <Link to={`/details/${car.id}`}>
+                                <Card {...car} />
+                            </Link>
+                        ))}
                 </div>
             </Container>
         </>
