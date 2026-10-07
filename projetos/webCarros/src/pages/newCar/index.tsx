@@ -13,6 +13,13 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/Input";
 
+// Context
+import { useAuth } from "../../context/useAuth";
+
+// firestore
+import { db } from "../../services/firebaseConnection";
+import { addDoc, collection } from "firebase/firestore";
+
 const carSchema = z.object({
     name: z.string().nonempty("O campo nome é obrigatório"),
     model: z.string().nonempty("O campo modelo é obrigatório"),
@@ -32,6 +39,8 @@ type FormData = z.infer<typeof carSchema>;
 const NewCar = () => {
     const [images, setImages] = useState<string[]>([]);
     const [imageUrl, setImageUrl] = useState("");
+
+    const { user } = useAuth();
 
     const {
         register,
@@ -58,13 +67,31 @@ const NewCar = () => {
         );
     };
 
-    const onSubmit = (data: FormData) => {
-        const car = {
-            ...data,
-            images,
-        };
+    const onSubmit = async (data: FormData) => {
+        if (!user) {
+            alert("Você precisa estar logado para cadastrar um carro.");
+            return;
+        }
 
-        console.log(car);
+        if (images.length === 0) {
+            alert("Envie alguma imagem deste carro");
+            return;
+        }
+
+        try {
+            const car = {
+                ...data,
+                images,
+                uid: user.uid,
+                userName: user.name
+            };
+
+            await addDoc(collection(db, "cars"), car);
+            alert("Carro cadastrado com sucesso!");
+        } catch (err) {
+            console.error("Erro ao cadastrar carro:", err);
+            alert("Erro ao cadastrar o carro.");
+        }
     };
 
     return (
