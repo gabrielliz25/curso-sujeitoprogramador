@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 // components
 import Container from "../../components/Container";
 import HeaderDashboard from "../../components/HeaderDashboard";
 
 // icons
-import { MdFileUpload } from "react-icons/md";
+import { MdAdd, MdDelete } from "react-icons/md";
 
 // libs
 import { useForm } from "react-hook-form";
@@ -28,6 +30,9 @@ const carSchema = z.object({
 type FormData = z.infer<typeof carSchema>;
 
 const NewCar = () => {
+    const [images, setImages] = useState<string[]>([]);
+    const [imageUrl, setImageUrl] = useState("");
+
     const {
         register,
         handleSubmit,
@@ -37,44 +42,103 @@ const NewCar = () => {
         mode: "onChange",
     });
 
+    const handleAddImage = () => {
+        const url = imageUrl.trim();
+
+        if (!url) return;
+
+        setImages((prevImages) => [...prevImages, url]);
+
+        setImageUrl("");
+    };
+
+    const handleRemoveImage = (indexToRemove: number) => {
+        setImages((prevImages) =>
+            prevImages.filter((_, index) => index !== indexToRemove),
+        );
+    };
+
     const onSubmit = (data: FormData) => {
-        console.log(data);
+        const car = {
+            ...data,
+            images,
+        };
+
+        console.log(car);
     };
 
     return (
         <Container>
             <HeaderDashboard />
 
-            <div className="mt-6 flex min-h-50 w-full gap-6 ">
-                <label
-                    htmlFor="car-images"
-                    className="relative flex h-50 w-50 shrink-0 cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-gray-400 transition hover:border-red-600 hover:bg-gray-50"
-                >
-                    <MdFileUpload size={70} className="text-gray-500" />
-
+            {/* IMAGENS */}
+            <div className="mt-6 flex w-full flex-col gap-4">
+                <div className="flex w-full gap-3">
                     <input
-                        id="car-images"
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        className="absolute inset-0 cursor-pointer opacity-0"
+                        type="url"
+                        value={imageUrl}
+                        onChange={(event) => setImageUrl(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                                event.preventDefault();
+                                handleAddImage();
+                            }
+                        }}
+                        placeholder="Cole o link da imagem"
+                        className="flex-1 rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-600"
                     />
-                </label>
 
-                <div className="flex flex-1 items-center justify-center rounded-xl border border-gray-300">
-                    <span className="text-gray-400">
-                        As imagens aparecerão aqui
-                    </span>
+                    <button
+                        type="button"
+                        onClick={handleAddImage}
+                        className="flex cursor-pointer items-center gap-2 rounded-lg bg-red-700 px-5 py-3 font-semibold text-white transition hover:bg-red-800"
+                    >
+                        <MdAdd size={22} />
+                        Adicionar
+                    </button>
+                </div>
+
+                <div className="flex min-h-50 w-full gap-4 overflow-x-auto rounded-xl border border-gray-300 p-4">
+                    {images.length === 0 ? (
+                        <div className="flex w-full items-center justify-center">
+                            <span className="text-gray-400">
+                                As imagens aparecerão aqui
+                            </span>
+                        </div>
+                    ) : (
+                        images.map((image, index) => (
+                            <div
+                                key={`${image}-${index}`}
+                                className="relative h-40 w-40 shrink-0 overflow-hidden rounded-lg"
+                            >
+                                <img
+                                    src={image}
+                                    alt={`Imagem do carro ${index + 1}`}
+                                    className="h-full w-full object-cover"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveImage(index)}
+                                    className="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-red-700 p-1 text-white transition hover:bg-red-800"
+                                >
+                                    <MdDelete size={20} />
+                                </button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </div>
 
+            {/* FORMULÁRIO */}
             <form
-                className="w-full border border-gray-300 rounded-2xl p-5 mt-5 mb-15 flex flex-col gap-5"
+                className="mt-5 mb-15 flex w-full flex-col gap-5 rounded-2xl border border-gray-300 p-5"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <h2 className="mb-6 text-xl font-semibold text-gray-800">
                     Informações do veículo
                 </h2>
+
                 <div>
                     <label
                         htmlFor="name"
@@ -82,6 +146,7 @@ const NewCar = () => {
                     >
                         Nome do Carro:
                     </label>
+
                     <Input
                         placeholder="Digite o nome do carro"
                         {...register("name")}
@@ -96,6 +161,7 @@ const NewCar = () => {
                     >
                         Modelo:
                     </label>
+
                     <Input
                         placeholder="Digite o modelo do carro"
                         {...register("model")}
@@ -111,6 +177,7 @@ const NewCar = () => {
                         >
                             Ano:
                         </label>
+
                         <Input
                             placeholder="Digite o ano do carro"
                             {...register("year")}
@@ -125,8 +192,9 @@ const NewCar = () => {
                         >
                             Km rodados:
                         </label>
+
                         <Input
-                            placeholder="Digite o nome do carro"
+                            placeholder="Digite os quilômetros rodados"
                             {...register("km")}
                             errors={errors.km?.message}
                         />
@@ -140,6 +208,7 @@ const NewCar = () => {
                     >
                         Valor em R$:
                     </label>
+
                     <Input
                         placeholder="Digite o preço do carro"
                         {...register("price")}
@@ -154,6 +223,7 @@ const NewCar = () => {
                     >
                         Cidade:
                     </label>
+
                     <Input
                         placeholder="Digite a cidade em que se localiza"
                         {...register("city")}
@@ -168,8 +238,9 @@ const NewCar = () => {
                     >
                         Whatsapp:
                     </label>
+
                     <Input
-                        placeholder="Digite o numero de telefone"
+                        placeholder="Digite o número de telefone"
                         {...register("whatsapp")}
                         errors={errors.whatsapp?.message}
                     />
@@ -182,6 +253,7 @@ const NewCar = () => {
                     >
                         Descrição:
                     </label>
+
                     <Input
                         placeholder="Digite a descrição do carro"
                         {...register("description")}
@@ -191,7 +263,7 @@ const NewCar = () => {
 
                 <button
                     type="submit"
-                    className="cursor-pointer w-full rounded-lg bg-red-700 px-6 py-3 font-semibold text-white shadow-sm transition duration-200 hover:bg-red-800 hover:shadow-md active:scale-[0.99]"
+                    className="w-full cursor-pointer rounded-lg bg-red-700 px-6 py-3 font-semibold text-white shadow-sm transition duration-200 hover:bg-red-800 hover:shadow-md active:scale-[0.99]"
                 >
                     Cadastrar
                 </button>
