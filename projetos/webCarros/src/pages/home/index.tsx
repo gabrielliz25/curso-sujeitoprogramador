@@ -15,7 +15,10 @@ import type { CarProps } from "../../type/car";
 
 const Home = () => {
     const [cars, setCars] = useState<CarProps[]>([]);
-
+    const [search, setSearch] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    console.log(searchTerm)
+    
     useEffect(() => {
         const loadCars = async () => {
             try {
@@ -37,18 +40,25 @@ const Home = () => {
         loadCars();
     }, []);
 
+    const filteredCars = cars.filter((car) =>
+        car.name.toLowerCase().includes(search.toLowerCase()),
+    );
+
     return (
         <>
             <Container>
-                <Search />
+                <Search
+                    value={search}
+                    onChange={setSearch}
+                    onSearch={() => setSearchTerm(search)}
+                />
 
-                <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {cars &&
-                        cars.map((car) => (
-                            <Link to={`/details/${car.id}`}>
-                                <Card {...car} />
-                            </Link>
-                        ))}
+                <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredCars.map((car) => (
+                        <Link to={`/details/${car.id}`}>
+                            <Card key={car.id} {...car} />
+                        </Link>
+                    ))}
                 </div>
             </Container>
         </>
