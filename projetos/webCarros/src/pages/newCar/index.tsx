@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/Input";
+import { toast } from "react-toastify";
 
 // Context
 import { useAuth } from "../../context/useAuth";
@@ -87,10 +88,11 @@ const NewCar = () => {
             };
 
             await addDoc(collection(db, "cars"), car);
-            alert("Carro cadastrado com sucesso!");
+            toast.success("Carro cadastrado com sucesso!");
+            
         } catch (err) {
             console.error("Erro ao cadastrar carro:", err);
-            alert("Erro ao cadastrar o carro.");
+            toast.error("Ocorreu um erro ao cadastrar um carro!");
         }
     };
 

@@ -12,6 +12,7 @@ import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 
 // firebase
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -49,8 +50,12 @@ const Login = () => {
                 console.log("USUÁRIO LOGADO COM SUCESSO!");
                 console.log(user);
                 navigate("/dashboard", { replace: true });
+                toast.success("Logado com sucesso!");
             })
-            .catch((err) => console.log("ERRO AO LOGAR USUÁRIO", err));
+            .catch((err) => {
+                toast.error("Erro ao logar");
+                console.log("ERRO AO LOGAR USUÁRIO", err);
+            });
     };
 
     return (

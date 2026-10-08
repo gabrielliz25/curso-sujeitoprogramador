@@ -20,6 +20,7 @@ import {
 import { useAuth } from "../../context/useAuth";
 
 import type { CarProps } from "../../type/car";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
     const [cars, setCars] = useState<CarProps[]>([]);
@@ -55,8 +56,10 @@ const Dashboard = () => {
             await deleteDoc(doc(db, "cars", id));
 
             setCars((prevCars) => prevCars.filter((car) => car.id !== id));
+            toast.info("Carro deletado!")
         } catch (error) {
             console.error("Erro ao deletar carro:", error);
+            toast.error("Erro ao deletar o carro!")
         }
     };
 

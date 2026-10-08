@@ -23,6 +23,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
+import { toast } from "react-toastify";
 
 const registerSchema = z.object({
     name: z.string().nonempty("O campo nome é obrigatório"),
@@ -70,8 +71,12 @@ const Register = () => {
 
                 console.log("USUÁRIO CADASTRADO COM SUCESSO");
                 navigate("/dashboard", { replace: true });
+                toast.success("Usuário cadastrado");
             })
-            .catch((err) => console.log("ERRO AO CADASTRAR USUÁRIO", err));
+            .catch((err) => {
+                toast.error("Erro ao cadastrar usuário");
+                console.log("ERRO AO CADASTRAR USUÁRIO", err);
+            });
     };
 
     return (
