@@ -1,0 +1,158 @@
+:root {
+    /* ========================================
+       CORES PRINCIPAIS
+    ======================================== */
+
+    --color-primary: #555934;
+    --color-secondary: #f2e6d8;
+    --color-tertiary: #bf9b7a;
+    --color-brown: #8c5b3e;
+    --color-dark: #593e2e;
+
+    /* ========================================
+       PRIMARY - VERDE OLIVA
+    ======================================== */
+
+    --color-primary-50: #f4f5ed;
+    --color-primary-100: #e5e7d5;
+    --color-primary-200: #cdd1b2;
+    --color-primary-300: #adb47f;
+    --color-primary-400: #7f874f;
+    --color-primary-500: #555934;
+    --color-primary-600: #484c2d;
+    --color-primary-700: #3a3d25;
+    --color-primary-800: #2d301e;
+    --color-primary-900: #202216;
+
+    /* ========================================
+       SECONDARY - CREME
+    ======================================== */
+
+    --color-secondary-50: #fffdf9;
+    --color-secondary-100: #fcf7f0;
+    --color-secondary-200: #f2e6d8;
+    --color-secondary-300: #e7d5c2;
+    --color-secondary-400: #d9bfa4;
+    --color-secondary-500: #c9a98b;
+    --color-secondary-600: #b08d6f;
+    --color-secondary-700: #927257;
+    --color-secondary-800: #725843;
+    --color-secondary-900: #523e30;
+
+    /* ========================================
+       TERTIARY - BEGE / MADEIRA CLARA
+    ======================================== */
+
+    --color-tertiary-50: #fcf8f4;
+    --color-tertiary-100: #f5ece3;
+    --color-tertiary-200: #ead9c9;
+    --color-tertiary-300: #d9bfa5;
+    --color-tertiary-400: #c9a98b;
+    --color-tertiary-500: #bf9b7a;
+    --color-tertiary-600: #a98263;
+    --color-tertiary-700: #8f694f;
+    --color-tertiary-800: #755440;
+    --color-tertiary-900: #5c4030;
+
+    /* ========================================
+       BROWN - MARROM
+    ======================================== */
+
+    --color-brown-50: #faf6f3;
+    --color-brown-100: #f0e5dd;
+    --color-brown-200: #e2cfc1;
+    --color-brown-300: #c9aa96;
+    --color-brown-400: #aa8067;
+    --color-brown-500: #8c5b3e;
+    --color-brown-600: #754b34;
+    --color-brown-700: #603d2b;
+    --color-brown-800: #4b3022;
+    --color-brown-900: #362219;
+
+    /* ========================================
+       DARK - MARROM ESCURO
+    ======================================== */
+
+    --color-dark-50: #f5f2f0;
+    --color-dark-100: #e5dfdb;
+    --color-dark-200: #cfc3bc;
+    --color-dark-300: #b09f95;
+    --color-dark-400: #856f63;
+    --color-dark-500: #593e2e;
+    --color-dark-600: #493226;
+    --color-dark-700: #3b291f;
+    --color-dark-800: #2d2018;
+    --color-dark-900: #201611;
+
+    /* ========================================
+       PRETO
+    ======================================== */
+
+    --color-black: #171612;
+    --color-black-soft: #24231e;
+    --color-black-light: #34332d;
+
+    /* ========================================
+       BRANCO
+    ======================================== */
+
+    --color-white: #ffffff;
+    --color-white-soft: #fffdf9;
+    --color-white-warm: #faf7f2;
+
+    /* ========================================
+       CINZAS NEUTROS
+    ======================================== */
+
+    --color-gray-50: #fafaf8;
+    --color-gray-100: #f2f2ef;
+    --color-gray-200: #e5e5e0;
+    --color-gray-300: #d1d1ca;
+    --color-gray-400: #aaa9a0;
+    --color-gray-500: #85847b;
+    --color-gray-600: #66655e;
+    --color-gray-700: #4d4c46;
+    --color-gray-800: #33322e;
+    --color-gray-900: #22211e;
+
+    /* ========================================
+       CORES DE ESTADO
+    ======================================== */
+
+    --color-success: #687342;
+    --color-success-dark: #4f5a2f;
+
+    --color-warning: #b58a45;
+    --color-warning-dark: #8e692f;
+
+    --color-danger: #a64f43;
+    --color-danger-dark: #813b32;
+
+    --color-info: #64766d;
+    --color-info-dark: #4c5d55;
+
+    /* ========================================
+       BORDAS
+    ======================================== */
+
+    --color-border: #e2d7ca;
+    --color-border-light: #eee7df;
+    --color-border-dark: #c5b5a5;
+
+    /* ========================================
+       BACKGROUNDS
+    ======================================== */
+
+    --color-background: #f9f5ef;
+    --color-background-light: #fffdf9;
+    --color-background-dark: #ede4d9;
+
+    /* ========================================
+       TEXTOS
+    ======================================== */
+
+    --color-text: #30271f;
+    --color-text-secondary: #66594e;
+    --color-text-muted: #8c8075;
+    --color-text-light: #b0a49a;
+}

@@ -1,1 +1,26 @@
+@import "./styles/variables.css";
 @import "tailwindcss";
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            color-mix(in srgb, var(--color-primary) 35%, transparent),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            color-mix(in srgb, var(--color-brown) 30%, transparent),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            var(--color-black) 0%,
+            var(--color-dark-800) 50%,
+            var(--color-black-soft) 100%
+        );
+
+    color: var(--color-white);
+}
