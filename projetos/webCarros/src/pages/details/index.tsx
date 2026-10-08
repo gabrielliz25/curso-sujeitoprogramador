@@ -50,30 +50,38 @@ const Details = () => {
 
     return (
         <Container>
-            <div>
-                <Swiper
-                    spaceBetween={12}
-                    slidesPerView={1}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                        },
-                    }}
-                    className="w-full max-w-4xl"
-                >
-                    {car.images.map((image, index) => (
-                        <SwiperSlide key={index}>
-                            <img
-                                src={image}
-                                alt={`${car.name} - imagem ${index + 1}`}
-                                className="aspect-square w-full rounded-xl object-cover"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+            <div className="w-full">
+                {car.images.length === 1 ? (
+                    <img
+                        src={car.images[0]}
+                        alt={`${car.name} - imagem 1`}
+                        className="w-full max-w-xl rounded-xl object-cover"
+                    />
+                ) : (
+                    <Swiper
+                        spaceBetween={12}
+                        slidesPerView={1}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                        className="w-full"
+                    >
+                        {car.images.map((image, index) => (
+                            <SwiperSlide key={index}>
+                                <img
+                                    src={image}
+                                    alt={`${car.name} - imagem ${index + 1}`}
+                                    className="aspect-square w-full rounded-xl object-cover"
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
             </div>
             <div className="flex flex-col mb-20">
                 <div className="border-b border-gray-200 pb-6">
