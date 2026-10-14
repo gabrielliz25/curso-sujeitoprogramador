@@ -1,6 +1,7 @@
 import Button from "./components/Button";
 import Content from "./components/Content";
 import Click from "./components/Click";
+import Input from "./components/Input";
 
 const App = () => {
     return (
@@ -11,6 +12,7 @@ const App = () => {
             <Click onClick={() => console.log("Fui clicado")} disabled={false}>
                 Clique em mim
             </Click>
+            <Input />
         </div>
     );
 };
